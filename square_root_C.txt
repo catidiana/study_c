@@ -1,0 +1,33 @@
+//this looks for power
+int get_exponent (int base, int power)
+{
+    int r = 1;
+    if (power==0) {return 1;}
+    if (power>0) {
+
+        for (int i = 0; i < power; i++)
+        {
+            r *= base;
+        }
+    }
+    return r;
+}
+//this looks for square root
+float SquareRoot (int a)
+{
+    float left=0.0;
+    float test=0.0;
+    for (int i=0;i<=8;i++)
+    {
+        int j=0;
+        test=left;
+        while (test*test<=(float)a)
+        {
+            left=test;
+            j=j+1;
+            test = test + (float)j/get_exponent(10, i);
+        }
+    }
+
+   return left;
+}

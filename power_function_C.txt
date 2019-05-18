@@ -1,0 +1,9 @@
+int pow(int a, int b)
+{
+    if (b==0) return 1;
+    int d=1;
+    for (int i=1;i<=b;i++) {
+        d=d*a;
+    }
+    return d;
+}

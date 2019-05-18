@@ -1,0 +1,29 @@
+void reverse (char *str)
+{
+    char *swap=' ';
+    char *Pstr = str;
+    while (*str!='\0') {
+        str++;
+    }
+    str--;
+    while (1) {
+        if(*Pstr!=*str)
+        {
+            swap = *Pstr;
+            *Pstr=*str;
+            *str = swap;
+        }
+        else {
+            break;
+        }
+        Pstr++;
+        if(*Pstr!=*str)
+        {
+            str--;
+        }
+        else {
+            break;
+        }
+    }
+
+}
