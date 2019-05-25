@@ -1,0 +1,13 @@
+//this function test if number is palindrom
+int palindrom (int a)
+{
+    int b=0;
+    int test=a;
+    //int l=num_len(a);
+    while (test!=0) {
+        int mod=test%10;
+        b=b*10+mod;
+        test=test/10;
+    }
+if (b==a) return 1; else return 0;
+}
