@@ -1,0 +1,14 @@
+void bubbleSort(char **a,int size) {
+    int i, j;
+    char* x;
+
+    for( i=0; i < size; i++) {            
+        for( j = size-1; j > i; j-- ) {     
+            if (strcmp(a[j-1],a[j])>0){
+                x=a[j-1];
+                a[j-1]=a[j];
+                a[j]=x;
+            }
+        }
+    }
+}
