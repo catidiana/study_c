@@ -16,4 +16,5 @@
 <br> - Polynomial evaluation in a standart slow way;<br/>
 <br> - Polynomial evaluation using Horners Method;<br/>
 <br> - Solution of system of linear equations using Gauss-Jordan elimination algorithm and Matrix class;<br/>
+<br> - Solution of system of linear equations using Cramer method and Matrix class;<br/>
 <br> ATTENTION!!!! Code is very lame.<br/>
