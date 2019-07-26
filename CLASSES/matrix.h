@@ -26,6 +26,12 @@ public:
     void insert_down (const Matrix& new_matrix); // add new matrix as rows to existing one
     void insert_right (const Matrix& new_matrix); // add new matrix as columns to existing one
     void swap_rows (int r1, int r2); // swap rows #r1 and #r2
+    void swap_columns (int c1, int c2);
+    void erase_row (int r); //erase row #r from the matrix, number of rows - 1
+    void erase_column (int c); //erase column #c from the matrix, number of columns - 1
+    void make_zero(); //set all elements of matrix to 0;
+    void make_identity(int n); //create n-square identity matrix
+    void transpose(); //perform transposition - rows become columns, columns - rows
 private:
     int rows;
     int columns;
@@ -46,8 +52,16 @@ istream& operator>>(istream& stream, Matrix& matrix);
 
 ostream& operator<<(ostream& stream, const Matrix& matrix);
 
+//FUNCTIONS
 
+//function return Determinant of a square matrix
+double Determinant (const Matrix& matrix);
 
+//function return matrix rang
+int Rang(Matrix matrix);
+
+//function return matrix trace
+double Trace(const Matrix& matrix);
 
 
 
