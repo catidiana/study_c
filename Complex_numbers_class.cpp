@@ -7,24 +7,24 @@ using namespace std;
 
 class Complex {
 public:
-    double real;
-    double imaginary;
+    double re;
+    double im;
     Complex () {
-        real = 0;
-        imaginary = 0;
+        re = 0;
+        im = 0;
     }
     Complex (double a) {
-        real = a;
-        imaginary = 0;
+        re = a;
+        im = 0;
     }
     Complex (double a, double b) {
-        real = a;
-        imaginary = b;
+        re = a;
+        im = b;
     }
 };
 
 inline double complex_modulus (const Complex& num) {
-    return sqrt(num.real*num.real + num.imaginary*num.imaginary);
+    return sqrt(num.re*num.re + num.im*num.im);
 }
 
 inline istream& operator >> (istream& stream, Complex& number) {
@@ -38,79 +38,79 @@ inline istream& operator >> (istream& stream, Complex& number) {
         else if(n[j] == 'i') i_position = j;
     }
     if (i_position == -1 && sign_position <= 0) {
-        number.real = stod(n);
-        number.imaginary = 0;
+        number.re = stod(n);
+        number.im = 0;
     } else if (i_position == -1 && sign_position > 0)
         throw invalid_argument("wrong number format");
     else if (i_position != len - 1)
         throw invalid_argument("wrong number format");
     else if (i_position == 0) {
-        number.real = 0;
-        number.imaginary = 1;
+        number.re = 0;
+        number.im = 1;
     } else if (i_position == 1 && sign_position == 0) {
         if (n[0] == '+') {
-            number.real = 0;
-            number.imaginary = 1;
+            number.re = 0;
+            number.im = 1;
         } else {
-            number.real = 0;
-            number.imaginary = -1;
+            number.re = 0;
+            number.im = -1;
         }
     } else if (i_position > 0 && sign_position <=0) {
         n.pop_back();
-        number.real = 0;
-        number.imaginary = stod(n);
+        number.re = 0;
+        number.im = stod(n);
     } else {
 string n1 = n.substr(0, sign_position);
 string n2 = n.substr(sign_position, len - sign_position);
-number.real = stod(n1);
-if (n2 == "+i") number.imaginary = 1;
-else if (n2 == "-i") number.imaginary = -1;
-else number.imaginary = stod(n2);
+number.re = stod(n1);
+if (n2 == "+i") number.im = 1;
+else if (n2 == "-i") number.im = -1;
+else number.im = stod(n2);
 }
     return stream;
 }
 
 inline ostream& operator << (ostream& stream, const Complex& number) {
-    if (number.imaginary == 0.0) stream << number.real;
-    else if(number.real == 0.0 && number.imaginary != 0) {
-        if (number.imaginary == 1.0) stream << "i";
-        else if (number.imaginary == -1.0) stream << "-i";
-        else stream << number.imaginary << "i";
+    if (number.im == 0.0) stream << number.re;
+    else if(number.re == 0.0 && number.im != 0) {
+        if (number.im == 1.0) stream << "i";
+        else if (number.im == -1.0) stream << "-i";
+        else stream << number.im << "i";
     }
     else {
-        stream << number.real;
-        if (number.imaginary == 1.0) stream << "+i";
-        else if (number.imaginary == -1.0) stream << "-i";
-        else if (number.imaginary > 0.0) stream << "+" << number.imaginary << "i";
-        else stream << number.imaginary << "i";
+        stream << number.re;
+        if (number.im == 1.0) stream << "+i";
+        else if (number.im == -1.0) stream << "-i";
+        else if (number.im > 0.0) stream << "+" << number.im << "i";
+        else stream << number.im << "i";
     }
     return stream;
 }
 
 inline Complex operator + (const Complex& lhs, const Complex& rhs) {
-    Complex result(lhs.real+rhs.real, lhs.imaginary+rhs.imaginary);
+    Complex result(lhs.re+rhs.re, lhs.im+rhs.im);
     return result;
 }
 
 inline Complex operator - (const Complex& lhs, const Complex& rhs) {
-    Complex result(lhs.real-rhs.real, lhs.imaginary-rhs.imaginary);
+    Complex result(lhs.re-rhs.re, lhs.im-rhs.im);
     return result;
 }
 
 inline Complex operator * (const Complex& lhs, const Complex& rhs) {
-    Complex result(lhs.real*rhs.real - lhs.imaginary*rhs.imaginary, lhs.real*rhs.imaginary + lhs.imaginary*rhs.real);
+    Complex result(lhs.re*rhs.re - lhs.im*rhs.im, lhs.re*rhs.im + lhs.im*rhs.re);
     return result;
 }
 
 inline Complex operator / (const Complex& lhs, const Complex& rhs) {
-    if (rhs.real == 0.0 && rhs.imaginary == 0.0)
+    if (rhs.re == 0.0 && rhs.im == 0.0)
         throw invalid_argument("Division by zero");
-    Complex result((lhs.real*rhs.real + lhs.imaginary*rhs.imaginary)/(rhs.real*rhs.real + rhs.imaginary*rhs.imaginary),
-                   (lhs.imaginary*rhs.real - lhs.real*rhs.imaginary)/(rhs.real*rhs.real + rhs.imaginary*rhs.imaginary));
+    Complex result((lhs.re*rhs.re + lhs.im*rhs.im)/(rhs.re*rhs.re + rhs.im*rhs.im),
+                   (lhs.im*rhs.re - lhs.re*rhs.im)/(rhs.re*rhs.re + rhs.im*rhs.im));
     return result;
 }
 
 inline bool operator == (const Complex& lhs, const Complex& rhs) {
-    return lhs.real == rhs.real &&
-           lhs.imaginary == rhs.imaginary;
+    return lhs.re == rhs.re &&
+           lhs.im == rhs.im;
 }
