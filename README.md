@@ -4,6 +4,7 @@
 <br> - Complex numbers class;<br/>
 <br> - Rational numbers class;<br/>
 <br> - Matrix class;<br/>
+<br> - Unsigned big integer class;<br/>
 <br> 2. SORT: <br/>
 <br> - Bubble sort;<br/>
 <br> - Merge sort;<br/>
