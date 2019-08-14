@@ -1,4 +1,3 @@
-<br>I just started to study C\C++. <br/>
 <br>Here are some useful and simple functions I wrote: <br/>
 <br> 1. CLASSES: <br/>
 <br> - Complex numbers class;<br/>
